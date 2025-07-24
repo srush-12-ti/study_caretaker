@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Study Caretaker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form action="/login" method="POST" class="login-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+    <a href="/"> Back to Home</a>
+  </div>
+</body>
+</html>

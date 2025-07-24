@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Caretaker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header + Nav -->
+  <header>
+    <h1>Study Caretaker</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <!-- Hero Banner -->
+    <section class="hero">
+      <h2>Master Your Study Goals</h2>
+      <p>Track. Achieve. Repeat. Your personalized study caretaker app.</p>
+    </section>
+  <div class="dashboard-preview">
+  <h3> Your Personal Dashboard </h3>
+  <p>Plan your subjects, track daily progress, and never miss a topic again!</p>
+  <a href="/signup" class="cta-button">Sign Up to Get Started</a>
+</div>
+
+    <!-- Weekly Progress -->
+    <section class="progress-box">
+      <h3> Weekly Progress</h3>
+      <p>You completed <strong>80%</strong> of your study plan this week! Keep it up! </p>
+    </section>
+
+    <!-- Subjects + Stats + Chat -->
+    <section class="subjects-box">
+      <h3> Subjects & Stats</h3>
+      <p><strong>Total Subjects:</strong> 4</p>
+      <p><strong>Planned:</strong> SQL, Python, Flask, MongoDB</p>
+
+      <!-- (Optional) Chat Box -->
+      <div class="chat-box">
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+          <input type="text" id="chat-input" placeholder="Type your message..." required>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Pseudo Code Animation -->
+    <section class="code-section">
+      <h3> How It Works</h3>
+      <pre id="typing-code"></pre>
+    </section>
+  </div>
+
+  <!-- Pseudo code typing animation -->
+  <script>
+    const code = `
+while (studyWeek):
+    for day in week:
+        assign(subject)
+        remind(time)
+        if not done:
+            backlog.append(subject)
+`;
+    let i = 0;
+    const speed = 50;
+    function typeCode() {
+      if (i < code.length) {
+        document.getElementById("typing-code").innerHTML += code.charAt(i);
+        i++;
+        setTimeout(typeCode, speed);
+      }
+    }
+    typeCode();
+  </script>
+</body>
+</html>

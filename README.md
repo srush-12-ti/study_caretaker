@@ -1,35 +1,31 @@
-#  Study Caretaker
+# Study Caretaker 
 
-**Study Caretaker** is a simple web application to help students plan, track, and manage their weekly study goals with daily tasks and progress tracking.  
-It provides a dashboard to add tasks, mark them as done or pending, and keep a backlog for missed topics.
+A simple Flask + MongoDB app that helps you plan your weekly study routine, track daily progress, and handle unfinished tasks with reminders.
 
----
+## Features
 
-##  **Features**
+Weekly subject schedule  
+Daily progress log  
+Automatic backlog for missed topics  
+Signup, login & protected dashboard  
+Soft pastel lavender-blue theme 🌷
 
--  **User Signup & Login**  
-  Create an account, log in, and manage your own study plan.
+## Tech
 
--  **Weekly Study Plan**  
-  Add tasks for each day of the week with subject and time.
+- Python 3
+- Flask
+- MongoDB
+- Bootstrap-ready (if you want to add it!)
 
--  **Daily Progress Tracker**  
-  Mark your daily study task as *Done* or *Pending*. 
+## Run locally
 
--  **Automatic Backlog**  
-  Missed tasks are added to a backlog to help you stay on track.
+```bash
+# create & activate virtual env
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate
 
--  **Personal Dashboard**  
-  See today’s task, update status, view backlog, and stay organized.
+# install requirements
+pip install -r requirements.txt
 
----
-
- **Tech Stack**
-
-- **Backend:** Python, Flask
-- **Database:** MongoDB (via PyMongo)
-- **Frontend:** HTML, CSS (with Google Fonts)
-- **Templating:** Jinja2
-
-
-
+# run app
+python app.py

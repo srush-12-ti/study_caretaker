@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Caretaker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<header>
+  <h1>Study Caretaker</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Login</a>
+  </nav>
+</header>
+
+<body>
+  <h1>Hello, {{ username.capitalize() }}!</h1>
+
+  {% if today_task %}
+    <h2>Today's Task</h2>
+    <p>Subject: {{ today_task.subject }}</p>
+    <p>Time: {{ today_task.time }}</p>
+  {% else %}
+    <h2>No task yet!</h2>
+    <p>You haven’t added any tasks yet. Add your first below:</p>
+    <form action="{{ url_for('add_task') }}" method="POST">
+      <input type="hidden" name="username" value="{{ username }}">
+      <label>Time:</label>
+      <input type="time" name="time" required>
+      <label>Subject:</label>
+      <input type="text" name="subject" placeholder="Subject" required>
+      <label>Day:</label>
+      <input type="text" name="day" placeholder="Day" required>
+      <button type="submit">Add Task</button>
+    </form>
+  {% endif %}
+
+  {% if progress_today %}
+    <h3>Progress for Today</h3>
+    <p>Status: {{ progress_today.status }}</p>
+    <p>Details: {{ progress_today.details }}</p>
+  {% else %}
+    <p>No progress logged for today yet.</p>
+  {% endif %}
+
+  {% if backlog and backlog | length > 0 %}
+    <h3>Backlog</h3>
+    <ul>
+      {% for item in backlog %}
+        <li>{{ item.subject }} (Missed on {{ item.day }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No backlog!</p>
+  {% endif %}
+
+  {% if today_task %}
+  <h3>Update Today’s Progress</h3>
+  <form action="/update_progress/{{ username }}" method="POST">
+    <input type="hidden" name="username" value="{{ username }}">
+    <label>Status:</label><br>
+    <select name="status">
+      <option value="done">Done</option>
+      <option value="pending">Pending</option>
+    </select><br><br>
+
+    <label>Details:</label><br>
+    <textarea name="details" rows="3" cols="30"></textarea><br><br>
+
+    <button type="submit">Update Progress</button>
+  </form>
+  {% endif %}
+
+  <p><a href="/">Back to Home</a></p>
+</body>
+</html>
